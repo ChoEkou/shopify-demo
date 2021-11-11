@@ -1,0 +1,132 @@
+
+<div class="container">
+  {% if section.settings.items == "2" %}
+      <div class="row">
+        <h1>{{section.settings.text1}}</h1>
+        <h1>{{section.settings.text2}}</h1>
+        {{section.settings.rich1}}
+        {% for block in section.blocks %}
+          <a href="{{block.settings.url}}">{{block.settings.url}}</a>
+          <span>{{block.settings.text}}</span>
+        {% endfor %}
+        {{section.settings.logo1 | img_url | img_tag}}
+      </div>
+  {% endif %}
+</div>
+
+{% style %}
+  .row {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "mydemo-2021",
+  "class": "test-class",
+  "settings":[
+  {
+    "type": "image_picker",
+    "id": "logo1",
+    "label": "demo image"
+  },
+  {
+    "type": "richtext",
+    "id": "rich1",
+    "label": "22",
+    "default": "<p>hhh</p>"
+  },
+    {
+      "type": "select",
+			"id":"items",
+			"label":"item in row",
+			"options":[
+        {
+          "value":"2",
+        "label":"2"
+        },
+        {
+          "value":"3",
+        "label":"3"
+        },
+        {
+          "value":"4",
+        "label":"4"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "textarea",
+      "id": "text1",
+      "label": "Text1",
+      "info":"第一列内容",
+      "default": "aa"
+    },
+    {
+      "type": "textarea",
+      "id": "text2",
+      "label": "Text2",
+      "info":"第二列内容",
+      "default": "bb"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "aa",
+      "name": "aa",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "label"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "my link"
+        },
+        {
+          "type": "checkbox",
+          "id": "checkbox",
+          "label": "checkbox",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "aa2",
+      "name": "bb2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "label"
+        },
+        {
+          "type": "url",
+          "id": "url1",
+          "label": "my link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "ss section",
+      "name":"mydemo",
+      "blocks": [
+      {
+        "type": "aa"
+      },
+      {
+        "type": "aa2"
+      }
+      ]
+    }
+  ]
+}
+{% endschema %}
