@@ -2,14 +2,15 @@
 <div class="container">
   {% if section.settings.items == "2" %}
       <div class="row">
-        <h1>{{section.settings.text1}}</h1>
-        <h1>{{section.settings.text2}}</h1>
+        <p>{{section.settings.text1}}</p>
+        <p>{{section.settings.text2}}</p>
         {{section.settings.rich1}}
         {% for block in section.blocks %}
-          <a href="{{block.settings.url}}">{{block.settings.url}}</a>
+          <a href="{{routes.collections_url}}">{{block.settings.url}}</a>
           <span>{{block.settings.text}}</span>
+          <span>{{block.settings.text2}}</span>
         {% endfor %}
-        {{section.settings.logo1 | img_url | img_tag}}
+        {{section.settings.img1 | img_tag}}
       </div>
   {% endif %}
 </div>
@@ -30,7 +31,7 @@
   "settings":[
   {
     "type": "image_picker",
-    "id": "logo1",
+    "id": "img1",
     "label": "demo image"
   },
   {
@@ -77,7 +78,7 @@
   "blocks": [
     {
       "type": "aa",
-      "name": "aa",
+      "name": "block1",
       "settings": [
         {
           "type": "text",
@@ -99,7 +100,7 @@
     },
     {
       "type": "aa2",
-      "name": "bb2",
+      "name": "block2",
       "settings": [
         {
           "type": "text",
