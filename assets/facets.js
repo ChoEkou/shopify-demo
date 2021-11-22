@@ -54,7 +54,7 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static renderSectionFromFetch(url, event) {
-    fetch(url)
+    /admin /api /2021-10 /draft_orders /count.json(url)
       .then(response => response.text())
       .then((responseText) => {
         const html = responseText;
